@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cafe Theory Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1><i class="fas fa-coffee"></i> Cafe Calculator</h1>
+      <p><i class="fas fa-info-circle"></i> Masukkan waktu antar kedatangan dan waktu pelayanan untuk menghitung parameter antrian di kafe</p>
+      <form method="post" action="/">
+        <div class="form-group">
+          <label for="interarrival_time"> <i class="fas fa-hourglass-start"></i> Waktu Antar Kedatangan (Ta): </label>
+          <input type="number" step="0.01" min="0.01" id="interarrival_time" name="interarrival_time" placeholder="dalam hitungan menit (contoh: 4.5)" required />
+        </div>
+        <div class="form-group">
+          <label for="service_time"> <i class="fas fa-user-clock"></i> Waktu Pelayanan per Pelayan (Ts): </label>
+          <input type="number" step="0.01" min="0.01" id="service_time" name="service_time" placeholder="dalam hitungan menit (contoh: 3.0)" required />
+        </div>
+        {% if result %}
+        <p id="error-message" style="color: red"><i class="fas fa-exclamation-circle"></i> {{ error }}</p>
+        <h2><i class="fas fa-chart-bar"></i> Hasil Antrian M/M/2 - Cafe Queue</h2>
+        <div class="result-group">
+          <label for="lambda"> <i class="fas fa-sync-alt"></i> Laju Kedatangan (λ): </label>
+          <input type="text" id="lambda" value="{{ result['lambda'] }}" readonly />
+        </div>
+        <div class="result-group">
+          <label for="mu"> <i class="fas fa-cogs"></i> Laju Pelayanan per Pelayan (μ): </label>
+          <input type="text" id="mu" value="{{ result['mu'] }}" readonly />
+        </div>
+        <div class="result-group">
+          <label for="rho"> <i class="fas fa-percentage"></i> Pemanfaatan Pelayan (ρ): </label>
+          <input type="text" id="rho" value="{{ result['rho'] }}" readonly />
+        </div>
+        <div class="result-group">
+          <label for="W"> <i class="fas fa-clock"></i> Waktu Rata-rata dalam Sistem (W): </label>
+          <input type="text" id="W" value="{{ result['W'] }}" readonly />
+        </div>
+        <div class="result-group">
+          <label for="Wq"> <i class="fas fa-stopwatch"></i> Waktu Rata-rata dalam Antrian (Wq): </label>
+          <input type="text" id="Wq" value="{{ result['Wq'] }}" readonly />
+        </div>
+        {% endif %} {% if steps %}
+        <div class="steps">
+          <h2><i class="fas fa-book"></i> Langkah-langkah Perhitungan:</h2>
+          <div id="mathjax-container">{{ steps|safe }}</div>
+        </div>
+        {% endif %}
+        <button type="submit"><i class="fas fa-calculator"></i> Hitung</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  background: linear-gradient(135deg, #8e44ad, #3498db); /* Gradasi ungu ke biru */
+  margin: 0;
+  padding: 0;
+  color: #333;
+  display: flex;
+  justify-content: center; /* Mengatur horizontal alignment */
+  align-items: center; /* Mengatur vertical alignment */
+  height: 100vh; /* Menyesuaikan tinggi layar */
+}
+
+.container {
+  max-width: 600px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border: 2px solid #8e44ad; /* Tambahkan border */
+  transition: transform 0.2s ease-in-out, border-color 0.3s ease; /* Smooth border transition */
+}
+
+.container:hover {
+  transform: scale(1.02);
+  border-color: #6a1b9a; /* Ubah warna border saat hover */
+}
+
+h1 {
+  text-align: center;
+  color: #444;
+  margin-bottom: 15px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+.form-group,
+.result-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #555;
+  display: block;
+  margin-bottom: 8px;
+}
+
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+  border-color: #8e44ad;
+  outline: none;
+  box-shadow: 0 0 5px rgba(142, 68, 173, 0.5);
+}
+
+input[readonly] {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #6a1b9a, #8e44ad);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #8e44ad, #6a1b9a);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+#error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
